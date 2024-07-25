@@ -46,8 +46,7 @@ public class BurgerTest {
         burger.addIngredient(sauceIngredient);
         burger.addIngredient(new Ingredient(IngredientType.FILLING, "cutlet", 100));
         burger.moveIngredient(0, 1);
-        Assert.assertTrue(Constants.INGREDIENT_CHOOSE_FOR_MOVE,
-                burger.ingredients.indexOf(sauceIngredient) == 1);
+        Assert.assertEquals(1,  burger.ingredients.indexOf(sauceIngredient));
     }
 
     @Test
@@ -56,7 +55,7 @@ public class BurgerTest {
         Mockito.when(sauceIngredient.getPrice()).thenReturn(10f);
         burger.addIngredient(sauceIngredient);
         burger.setBuns(bun);
-        Assert.assertTrue(Constants.INCORRECT_BURGER_PRICE,burger.getPrice() == 41f);
+        Assert.assertEquals(Constants.INCORRECT_BURGER_PRICE,41f, burger.getPrice(), 0.001);
     }
 
     @Test
